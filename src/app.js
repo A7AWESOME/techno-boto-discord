@@ -7,11 +7,20 @@ import { containsUrl, isTwitchUrl } from './helpers'
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
-
-client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('Pong!');
+client.on('message', message => {
+  if (message.content.startsWith("nigga ")) {
+     message.delete(1000); //Supposed to delete message
+     message.channel.send(message.content.slice(5, message.content.length));
+     msg.reply('Please refrean from saying that');
   }
+});
+client.on('message', message => {
+  if (message.content.startsWith("||say ")) {
+     message.delete(1000); //Supposed to delete message
+     message.channel.send(message.content.slice(5, message.content.length));
+     msg.reply('Please refrean from saying that');
+  }
+});
     if (msg.channel.id === TWITCH_CHANNEL_ID) {
       console.log('is twitch channel')
       // is in twitch channel
